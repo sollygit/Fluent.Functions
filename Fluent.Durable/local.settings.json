@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "FLUENT_ENGINE_URL": "http://javarestswaggerlb-b2e37fa8d7ae661f.elb.us-east-1.amazonaws.com:8080"
+  }
+}

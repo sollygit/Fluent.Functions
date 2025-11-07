@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "FLUENT_ENGINE_URL": "http://javarestswaggerlb-b2e37fa8d7ae661f.elb.us-east-1.amazonaws.com:8080",
+    "OAuth2Settings:TenantId": "d7e5c5e0-2547-4cf0-b3e6-85b7355b90c2",
+    "OAuth2Settings:ClientId": "04618520-060c-4f8f-a4f0-163d582a8720"
+  }
+}
