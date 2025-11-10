@@ -172,6 +172,7 @@ namespace Fluent.FunctionApp.Functions
             }
 
             var bytes = await result.Content.ReadAsByteArrayAsync();
+            response.Headers.Add("Content-Type", "application/pdf");
             await response.WriteBytesAsync(bytes);
             return response;
         }
