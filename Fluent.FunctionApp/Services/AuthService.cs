@@ -3,10 +3,10 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Fluent.Functions.Settings;
+using Fluent.FunctionApp.Settings;
 using Fluent.Models;
 
-namespace Fluent.Functions.Services
+namespace Fluent.FunctionApp.Services
 {
     public interface IAuthService
     {

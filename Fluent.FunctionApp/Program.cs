@@ -3,11 +3,11 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Fluent.Functions.Services;
-using Fluent.Functions.Settings;
+using Fluent.FunctionApp.Services;
+using Fluent.FunctionApp.Settings;
 using System.Text.Json.Serialization;
 
-namespace Fluent.Functions
+namespace Fluent.FunctionApp
 {
     public class Program
     {

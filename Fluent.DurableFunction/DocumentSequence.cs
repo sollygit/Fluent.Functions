@@ -41,20 +41,20 @@ namespace Fluent.Durable
             return await client.CreateCheckStatusResponseAsync(req, instanceId);
         }
 
-        [Function(nameof(ProcessDocument))]
-        public async Task<DocumentSequenceResponse> ProcessDocument([OrchestrationTrigger] TaskOrchestrationContext context, DocumentRequest document)
+        [Function(nameof(DocumentProcess))]
+        public async Task<DocumentSequenceResponse> DocumentProcess([OrchestrationTrigger] TaskOrchestrationContext context, DocumentRequest document)
         {
-            var response = await context.CallActivityAsync<DocumentSequenceResponse>(nameof(PostDocument), document);
-            var statusCode = await context.CallActivityAsync<HttpStatusCode>(nameof(GetStatus), response.Guid);
-            var meta = await context.CallActivityAsync<MetaResponse>(nameof(GetMeta), response.Guid);
+            var response = await context.CallActivityAsync<DocumentSequenceResponse>(nameof(Create), document);
+            var statusCode = await context.CallActivityAsync<HttpStatusCode>(nameof(Status), response.Guid);
+            var meta = await context.CallActivityAsync<MetaResponse>(nameof(Meta), response.Guid);
             
             return new DocumentSequenceResponse { Guid = response.Guid, StatusCode = statusCode, NumberOfPages = meta.NumberOfPages, Uri = meta.Uri };
         }
 
-        [Function(nameof(PostDocument))]
-        public async Task<DocumentSequenceResponse> PostDocument([ActivityTrigger] DocumentRequest document, FunctionContext executionContext)
+        [Function(nameof(Create))]
+        public async Task<DocumentSequenceResponse> Create([ActivityTrigger] DocumentRequest document, FunctionContext executionContext)
         {
-            var logger = executionContext.GetLogger(nameof(PostDocument));
+            var logger = executionContext.GetLogger(nameof(Create));
             var httpClientFactory = executionContext.InstanceServices.GetService(typeof(IHttpClientFactory)) as IHttpClientFactory;
 
             var client = httpClientFactory.CreateClient("FluentEngineClient");
@@ -64,7 +64,7 @@ namespace Fluent.Durable
             };
             request.Headers.Add("X-WINDWARD-LICENSE", WINDWARD_LICENSE);
 
-            logger.LogInformation("PostDocument:{AbsoluteUri}", new Uri(client.BaseAddress, "v2/document"));
+            logger.LogInformation("Create:{AbsoluteUri}", new Uri(client.BaseAddress, "v2/document"));
 
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
@@ -77,10 +77,10 @@ namespace Fluent.Durable
             return new DocumentSequenceResponse { Guid = docResponse.Guid, NumberOfPages = docResponse.NumberOfPages, StatusCode = response.StatusCode };
         }
 
-        [Function(nameof(GetStatus))]
-        public async Task<HttpStatusCode> GetStatus([ActivityTrigger] Guid guid, FunctionContext executionContext)
+        [Function(nameof(Status))]
+        public async Task<HttpStatusCode> Status([ActivityTrigger] Guid guid, FunctionContext executionContext)
         {
-            var logger = executionContext.GetLogger(nameof(GetStatus));
+            var logger = executionContext.GetLogger(nameof(Status));
             var httpClientFactory = executionContext.InstanceServices.GetService(typeof(IHttpClientFactory)) as IHttpClientFactory;
             var client = httpClientFactory.CreateClient("FluentEngineClient");
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v2/document/{guid}/status");
@@ -91,10 +91,10 @@ namespace Fluent.Durable
             return response.StatusCode;
         }
 
-        [Function(nameof(GetMeta))]
-        public async Task<MetaResponse> GetMeta([ActivityTrigger] Guid guid, FunctionContext executionContext)
+        [Function(nameof(Meta))]
+        public async Task<MetaResponse> Meta([ActivityTrigger] Guid guid, FunctionContext executionContext)
         {
-            var logger = executionContext.GetLogger(nameof(GetMeta));
+            var logger = executionContext.GetLogger(nameof(Meta));
             var httpClientFactory = executionContext.InstanceServices.GetService(typeof(IHttpClientFactory)) as IHttpClientFactory;
             var client = httpClientFactory.CreateClient("FluentEngineClient");
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v2/document/{guid}/meta");

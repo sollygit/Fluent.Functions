@@ -1,5 +1,5 @@
 using Fluent.Common;
-using Fluent.Functions.Services;
+using Fluent.FunctionApp.Services;
 using Fluent.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
@@ -10,9 +10,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 
-namespace Fluent.Functions
+namespace Fluent.FunctionApp.Functions
 {
-    public class FluentEngineWebJob
+    public class FluentEngine
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IAuthService _authService;
@@ -20,7 +20,7 @@ namespace Fluent.Functions
         private readonly string FLUENT_ENGINE_URL;
         private readonly string WINDWARD_LICENSE;
 
-        public FluentEngineWebJob(IHttpClientFactory httpClientFactory, IAuthService authService, IConfiguration configuration)
+        public FluentEngine(IHttpClientFactory httpClientFactory, IAuthService authService, IConfiguration configuration)
         {
             _httpClientFactory = httpClientFactory;
             _authService = authService;
@@ -62,12 +62,12 @@ namespace Fluent.Functions
             return response;
         }
 
-        [Function(nameof(Document))]
-        public async Task<HttpResponseData> Document([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = $"FluentEngine/{nameof(Document)}")] HttpRequestData req,
+        [Function(nameof(Create))]
+        public async Task<HttpResponseData> Create([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = $"FluentEngine/{nameof(Create)}")] HttpRequestData req,
             FunctionContext executionContext)
         {
             var response = req.CreateResponse();
-            var logger = executionContext.GetLogger(nameof(Document));
+            var logger = executionContext.GetLogger(nameof(Create));
 
             try
             {

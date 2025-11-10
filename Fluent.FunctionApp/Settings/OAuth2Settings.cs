@@ -1,4 +1,4 @@
-﻿namespace Fluent.Functions.Settings
+﻿namespace Fluent.FunctionApp.Settings
 {
     public class OAuth2Settings
     {
