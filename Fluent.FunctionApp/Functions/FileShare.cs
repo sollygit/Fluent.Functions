@@ -32,16 +32,26 @@ namespace Fluent.FunctionApp.Functions
                 var shareName = req.Query.Get("sharename");
                 var directory = req.Query.Get("directory");
                 var filename = req.Query.Get("filename");
+                var encoded = req.Query.Get("encoded");
                 var shareClient = new ShareClient(FileShare_ConnectionString, shareName);
                 var dir = shareClient.GetDirectoryClient(directory);
                 var file = dir.GetFileClient(filename);
                 var fileDownloadInfo = await file.DownloadAsync();
-                var bytes = new byte[fileDownloadInfo.Value.ContentLength];
-                using (var stream = file.OpenRead(new ShareFileOpenReadOptions(false)))
+                var rawBytes = new byte[fileDownloadInfo.Value.ContentLength];
+                using (var stream = await file.OpenReadAsync(new ShareFileOpenReadOptions(false)))
                 {
-                    stream.Read(bytes, 0, bytes.Length);
+                    int totalRead = 0;
+                    while (totalRead < rawBytes.Length)
+                    {
+                        int read = await stream.ReadAsync(rawBytes.AsMemory(totalRead, rawBytes.Length - totalRead));
+                        if (read == 0) break; // EOF
+                        totalRead += read;
+                    }
                 }
-                await response.WriteBytesAsync(bytes);
+
+                await (encoded == "true" ?
+                    response.WriteStringAsync(Convert.ToBase64String(rawBytes)) :
+                    response.WriteBytesAsync(rawBytes));
 
                 return response;
             }
