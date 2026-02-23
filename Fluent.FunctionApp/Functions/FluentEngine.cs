@@ -146,7 +146,7 @@ namespace Fluent.FunctionApp.Functions
                 return response;
             }
 
-            var metaResponse = await result.Content.ReadFromJsonAsync<MetaResponse>();
+            var metaResponse = await result.Content.ReadFromJsonAsync<MetaResult>();
             await response.WriteAsJsonAsync(metaResponse);
             return response;
         }

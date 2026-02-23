@@ -42,17 +42,17 @@ namespace Fluent.Durable
         }
 
         [Function(nameof(DocumentProcess))]
-        public async Task<DocumentSequenceResponse> DocumentProcess([OrchestrationTrigger] TaskOrchestrationContext context, DocumentRequest document)
+        public async Task<DocumentResult> DocumentProcess([OrchestrationTrigger] TaskOrchestrationContext context, DocumentRequest document)
         {
-            var response = await context.CallActivityAsync<DocumentSequenceResponse>(nameof(Create), document);
-            var statusCode = await context.CallActivityAsync<HttpStatusCode>(nameof(Status), response.Guid);
-            var meta = await context.CallActivityAsync<MetaResponse>(nameof(Meta), response.Guid);
-            
-            return new DocumentSequenceResponse { Guid = response.Guid, StatusCode = statusCode, NumberOfPages = meta.NumberOfPages, Uri = meta.Uri };
+            var result = await context.CallActivityAsync<DocumentResult>(nameof(Create), document);
+            var statusCode = await context.CallActivityAsync<HttpStatusCode>(nameof(Status), result.Guid);
+            var meta = await context.CallActivityAsync<MetaResult>(nameof(Meta), result.Guid);
+
+            return new DocumentResult { Guid = result.Guid, NumberOfPages = meta.NumberOfPages, StatusCode = statusCode, Uri = meta.Uri };
         }
 
         [Function(nameof(Create))]
-        public async Task<DocumentSequenceResponse> Create([ActivityTrigger] DocumentRequest document, FunctionContext executionContext)
+        public async Task<DocumentResult> Create([ActivityTrigger] DocumentRequest document, FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger(nameof(Create));
             var httpClientFactory = executionContext.InstanceServices.GetService(typeof(IHttpClientFactory)) as IHttpClientFactory;
@@ -70,11 +70,11 @@ namespace Fluent.Durable
             response.EnsureSuccessStatusCode();
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            var serializer = new XmlSerializer(typeof(DocumentResponse));
+            var serializer = new XmlSerializer(typeof(DocumentResult));
             using var reader = new StringReader(responseContent);
-            var docResponse = (DocumentResponse)serializer.Deserialize(reader);
+            var docResponse = (DocumentResult)serializer.Deserialize(reader);
 
-            return new DocumentSequenceResponse { Guid = docResponse.Guid, NumberOfPages = docResponse.NumberOfPages, StatusCode = response.StatusCode };
+            return docResponse;
         }
 
         [Function(nameof(Status))]
@@ -92,7 +92,7 @@ namespace Fluent.Durable
         }
 
         [Function(nameof(Meta))]
-        public async Task<MetaResponse> Meta([ActivityTrigger] Guid guid, FunctionContext executionContext)
+        public async Task<MetaResult> Meta([ActivityTrigger] Guid guid, FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger(nameof(Meta));
             var httpClientFactory = executionContext.InstanceServices.GetService(typeof(IHttpClientFactory)) as IHttpClientFactory;
@@ -106,7 +106,7 @@ namespace Fluent.Durable
 
             await Task.Delay(5000); // Add a short delay to ensure the meta is available
             var result = await client.SendAsync(request);
-            var metaResponse = await result.Content.ReadFromJsonAsync<MetaResponse>();
+            var metaResponse = await result.Content.ReadFromJsonAsync<MetaResult>();
             return metaResponse;
         }
     }

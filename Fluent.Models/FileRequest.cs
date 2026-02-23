@@ -1,7 +1,4 @@
 ﻿namespace Fluent.Models
 {
-    public class FileRequest
-    {
-        public string Path { get; set; }
-    }
+    public record FileRequest(string Path);
 }

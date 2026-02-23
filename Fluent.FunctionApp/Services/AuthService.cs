@@ -61,7 +61,7 @@ namespace Fluent.FunctionApp.Services
             return newToken.AccessToken;
         }
 
-        private async Task<TokenResponse> GetTokenAsync()
+        private async Task<TokenResult> GetTokenAsync()
         {
             try
             {
@@ -85,7 +85,7 @@ namespace Fluent.FunctionApp.Services
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
-                var token = JsonConvert.DeserializeObject<TokenResponse>(json);
+                var token = JsonConvert.DeserializeObject<TokenResult>(json);
 
                 return token ?? throw new JsonException("Failed to deserialize token response.");
             }
