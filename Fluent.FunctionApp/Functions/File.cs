@@ -2,6 +2,9 @@ using Fluent.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Fluent.FunctionApp.Functions
 {

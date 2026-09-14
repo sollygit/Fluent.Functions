@@ -1,10 +1,13 @@
 ﻿using Azure.Core;
+using Fluent.FunctionApp.Settings;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Fluent.FunctionApp.Settings;
-using Fluent.Models;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Fluent.FunctionApp.Services
 {
@@ -96,4 +99,11 @@ namespace Fluent.FunctionApp.Services
             }
         }
     }
+
+    public record TokenResult(
+        [property: JsonProperty("token_type")] string TokenType,
+        [property: JsonProperty("expires_in")] int ExpiresIn,
+        [property: JsonProperty("ext_expires_in")] int ExtExpiresIn,
+        [property: JsonProperty("access_token")] string AccessToken
+    );
 }
