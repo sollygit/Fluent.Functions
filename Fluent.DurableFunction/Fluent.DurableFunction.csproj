@@ -37,10 +37,4 @@
     </None>
   </ItemGroup>
 
-  <Target Name="PrepareAzureHostJson" BeforeTargets="Publish">
-    <Copy
-      SourceFiles="host.azure.json"
-      DestinationFiles="$(PublishDir)host.json" />
-  </Target>
-
 </Project>
