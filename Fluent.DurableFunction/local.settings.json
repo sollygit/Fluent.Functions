@@ -3,6 +3,8 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "DURABLE_TASK_SCHEDULER_CONNECTION_STRING": "Endpoint=https://fluent-dts-awcwd9abgshuf.australiasoutheast.durabletask.io;Authentication=ManagedIdentity;ClientID=e98d7520-bc8c-42f0-894b-c3dce451f0c6",
+    "TASKHUB_NAME": "DurableFunctions",
     "FLUENT_ENGINE_URL": "http://javarestswaggerlb-b2e37fa8d7ae661f.elb.us-east-1.amazonaws.com:8080"
   }
 }
