@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <metadata>
+        <account_no>41302234</account_no>
+        <client_first_name>John</client_first_name>
+        <client_last_name>Doe</client_last_name>
+        <client_suffix>Mr.</client_suffix>
+        <account_type>Rollover IRA</account_type>
+        <title>Personal Portfolio Review</title>
+        <period_start>5/1/2007</period_start>
+        <period_end>5/31/2007</period_end>
+        <profile_notes_1>Ending value does not reflect total amount available for withdrawal or any pending transactions. Please see Portfolio Activity Summary on page 2 for additional information.</profile_notes_1>
+        <profile_disclaimer>*Net change includes account additions, withdrawals, fees and other charges, dividends, interest and change in market value.</profile_disclaimer>
+        <portfolio_allocation_notes>Available cash within each account is show in the account detail pages. To view accounts with check writing privileges see page 2. The above breakdown provides a different view of your investments. Please note, some of you individual investments may be spread across multiple categories due to their makeup. For example, the allocation of an equity mutual fund may be spread across multiple asset classes, including Cash and Equivalents.</portfolio_allocation_notes>
+        <porfolio_activity_notes>The Ending Value does not reflect any pending transactions in your account(s). Should you choose to sell your entire portfolio or a holding in an account; the total amount received may not be the same as the ending value noted here due to sales or surrender charges, tax withholding, outstanding loads or other fees that my apply at the time of sale.</porfolio_activity_notes>
+    </metadata>
+    <data>
+        <year_begin_value>39948.88</year_begin_value>
+        <year_end_value>42687.20</year_end_value>
+        <period_begin_value>41881.39</period_begin_value>
+        <period_end_value>42687.20</period_end_value>
+        <prior_year_cash_eq/>
+        <prior_year_cash_eq_percent/>
+        <prior_year_equities/>
+        <prior_year_equities_percent/>
+        <prior_year_fixed_income/>
+        <prior_year_fixed_income_percent/>
+        <prior_year_non_classified/>
+        <prior_year_non_classified_percent/>
+        <prior_year_total_assets>37023.49</prior_year_total_assets>
+        <prior_year_total_assets_percent>1.00</prior_year_total_assets_percent>
+        <prior_year_liabilities>0.00</prior_year_liabilities>
+        <prior_year_total_portfolio_value>37023.49</prior_year_total_portfolio_value>
+
+        <prior_period_cash_eq>4439.99</prior_period_cash_eq>
+        <prior_period_cash_eq_percent>0.11</prior_period_cash_eq_percent>
+        <prior_period_equities>24510.45</prior_period_equities>
+        <prior_period_equities_percent>0.58</prior_period_equities_percent>
+        <prior_period_fixed_income>12447.51</prior_period_fixed_income>
+        <prior_period_fixed_income_percent>0.30</prior_period_fixed_income_percent>
+        <prior_period_non_classified>434.44</prior_period_non_classified>
+        <prior_period_non_classified_percent>0.01</prior_period_non_classified_percent>
+        <prior_period_total_assets/>
+        <prior_period_total_assets_percent>100</prior_period_total_assets_percent>
+        <prior_period_liabilities>0.00</prior_period_liabilities>
+        <prior_period_total_portfolio_value/>
+
+        <current_period_cash_eq>4778.00</current_period_cash_eq>
+        <current_period_cash_eq_percent>0.11</current_period_cash_eq_percent>
+        <current_period_equities>25317.34</current_period_equities>
+        <current_period_equities_percent>0.60</current_period_equities_percent>
+        <current_period_fixed_income>12060.55</current_period_fixed_income>
+        <current_period_fixed_income_percent>0.28</current_period_fixed_income_percent>
+        <current_period_non_classified>531.31</current_period_non_classified>
+        <current_period_non_classified_percent>0.01</current_period_non_classified_percent>
+        <current_period_total_assets/>
+        <current_period_total_assets_percent>1.00</current_period_total_assets_percent>
+        <current_period_liabilities>0.00</current_period_liabilities>
+        <current_period_total_portfolio_value/>
+        <quarters>
+            <date>2022-07-01</date>
+            <name>Q305</name>
+            <amount>37023.49</amount>
+        </quarters>
+        <quarters>
+            <date>2022-10-01</date>
+            <name>Q405</name>
+            <amount>37250.00</amount>
+        </quarters>
+        <quarters>
+            <date>2023-01-01</date>
+            <name>Q106</name>
+            <amount>38125.00</amount>
+        </quarters>
+        <quarters>
+            <date>2023-04-01</date>
+            <name>Q206</name>
+            <amount>37400.00</amount>
+        </quarters>
+        <quarters>
+            <date>2023-07-01</date>
+            <name>Q306</name>
+            <amount>38000.00</amount>
+        </quarters>       
+        <quarters>
+            <date>2023-10-01</date>
+            <name>Q406</name>
+            <amount>40000.00</amount>
+        </quarters>
+        <quarters>
+            <date>2024-01-01</date>
+            <name>Q107</name>
+            <amount>40625.00</amount>
+        </quarters>
+        <quarters>
+            <date>2024-04-01</date>
+            <name>Q207</name>
+            <amount>42687.20</amount>
+        </quarters>          
+        <percentage>
+            <category>Cash and Equivalents</category>
+            <current_period_percent>0.11</current_period_percent>
+        </percentage>
+        <percentage>       
+            <category>Equities</category>
+            <current_period_percent>0.60</current_period_percent>
+        </percentage>
+        <percentage>
+            <category>Fixed Income</category>
+            <current_period_percent>0.28</current_period_percent>
+        </percentage>
+        <percentage>
+            <category>Non-Classified</category>
+            <current_period_percent>0.01</current_period_percent>            
+        </percentage>
+    </data>
+</root>
