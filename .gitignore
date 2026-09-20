@@ -361,3 +361,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /QCRS.Functions/local.settings.json
+
+# .azurite folder for local Azure Storage emulator
+.azurite/
