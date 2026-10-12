@@ -10,9 +10,9 @@ using System.Net;
 
 namespace Fluent.DurableFunction
 {
-    public static class DocumentOrchestration
+    public static class RunDocumentOrchestration
     {
-        [Function(nameof(DocumentOrchestration))]
+        [Function(nameof(RunDocumentOrchestration))]
         public static async Task<DocumentResult> RunOrchestrator([OrchestrationTrigger] TaskOrchestrationContext context, DocumentRequest document)
         {
             var result = await context.CallActivityAsync<DocumentResult>(nameof(Create), document);
@@ -22,16 +22,16 @@ namespace Fluent.DurableFunction
             return new DocumentResult { Guid = result.Guid, NumberOfPages = meta.NumberOfPages, StatusCode = statusCode, Uri = meta.Uri };
         }
 
-        [Function("DocumentOrchestration_HttpStart")]
+        [Function("StartFluentGenerator")]
         public static async Task<HttpResponseData> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req,
             [DurableClient] DurableTaskClient client,
             FunctionContext executionContext)
         {
-            var logger = executionContext.GetLogger(nameof(DocumentOrchestration));
+            var logger = executionContext.GetLogger(nameof(RunDocumentOrchestration));
             var content = await new StreamReader(req.Body).ReadToEndAsync();
             var document = content.FromJson<DocumentRequest>();
-            var instanceId = await client.ScheduleNewOrchestrationInstanceAsync(nameof(DocumentOrchestration), document);
+            var instanceId = await client.ScheduleNewOrchestrationInstanceAsync(nameof(RunDocumentOrchestration), document);
 
             logger.LogInformation("Created new orchestration with instance ID = {instanceId}", instanceId);
 
