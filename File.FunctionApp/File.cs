@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace FileFunctionApp;
+namespace File.FunctionApp;
 
 public static class File
 {
@@ -40,13 +40,13 @@ public static class File
             var extension = Path.GetExtension(uri.AbsolutePath).ToLowerInvariant();
             var contentType = extension switch
             {
-                ".pdf" => "application/pdf",
                 ".json" => "application/json",
                 ".txt" => "text/plain",
                 ".xml" => "application/xml",
                 ".csv" => "text/csv",
                 ".png" => "image/png",
                 ".jpg" or ".jpeg" => "image/jpeg",
+                "" or ".pdf" => "application/pdf",
                 _ => downloadResponse.Content.Headers.ContentType?.MediaType ?? "application/octet-stream"
             };
 

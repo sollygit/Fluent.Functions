@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "FileFunctionApp": {
+    "File.FunctionApp": {
       "commandName": "Project",
       "commandLineArgs": "--port 7071",
       "launchBrowser": false

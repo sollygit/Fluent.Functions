@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Net;
 
-namespace FileFunctionApp;
+namespace File.FunctionApp;
 
 public static class FileShare
 {

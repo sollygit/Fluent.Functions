@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.FunctionApp", "Fluen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.DurableFunction", "Fluent.DurableFunction\Fluent.DurableFunction.csproj", "{49CAED8F-D4DE-2EAD-F2F6-9B6BB6BFC2EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileFunctionApp", "FileFunctionApp\FileFunctionApp.csproj", "{91B088CA-1B15-4873-B998-8D21E0D3D052}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "File.FunctionApp", "File.FunctionApp\File.FunctionApp.csproj", "{2CFC0018-0F0C-D15C-46E5-A5B58D64DB0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{49CAED8F-D4DE-2EAD-F2F6-9B6BB6BFC2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CAED8F-D4DE-2EAD-F2F6-9B6BB6BFC2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CAED8F-D4DE-2EAD-F2F6-9B6BB6BFC2EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91B088CA-1B15-4873-B998-8D21E0D3D052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91B088CA-1B15-4873-B998-8D21E0D3D052}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91B088CA-1B15-4873-B998-8D21E0D3D052}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91B088CA-1B15-4873-B998-8D21E0D3D052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFC0018-0F0C-D15C-46E5-A5B58D64DB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFC0018-0F0C-D15C-46E5-A5B58D64DB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFC0018-0F0C-D15C-46E5-A5B58D64DB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFC0018-0F0C-D15C-46E5-A5B58D64DB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
