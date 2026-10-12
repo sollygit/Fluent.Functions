@@ -5,7 +5,7 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>005da1b8-4193-4284-a4b0-f52cb77d7cf9</UserSecretsId>
+    <UserSecretsId>faed84b4-f6de-430c-9aaa-357b368acf89</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
